@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState } from "react";
+// import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { signin } from "../actions/actions";
+// import { signin } from "../actions/actions";
 
 // interface LocationState {
 //   user: string;
@@ -10,7 +10,7 @@ import { signin } from "../actions/actions";
 
 export const User: React.FunctionComponent = () => {
   const { user } = useParams();
-  const [editUser, setEditUser] = useState<string | undefined>(user);
+  // const [editUser, setEditUser] = useState<string | undefined>(user);
   const dispatch = useDispatch();
 
   const handleEdit = (e: React.FormEvent<HTMLDivElement>) => {
@@ -27,7 +27,8 @@ export const User: React.FunctionComponent = () => {
         <h1>
           Welcome back
           <br />
-          <span onChange={(e) => setEditUser(e.target.value)}>{user}</span>
+          {/* <span onChange={(e) => setEditUser(e.target.value)}>{user}</span> */}
+          <span>{user}</span>
         </h1>
         <button className="edit-button">Edit Name</button>
       </div>
