@@ -42,6 +42,31 @@ export const getUser = async (token: string) => {
   }
 };
 
+// createUser
+export const createUser = async (
+  emailUser: string,
+  passwordUser: string,
+  firstNameOfUser: string,
+  lastNameOfUser: string
+) => {
+  try {
+    const { data } = await axios.post(
+      "http://localhost:3001/api/v1/user/profile",
+      {
+        email: emailUser,
+        password: passwordUser,
+        firstName: firstNameOfUser,
+        lastName: lastNameOfUser,
+      }
+    );
+    console.log(data)
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
+};
+
 // putUser
 export const updateUser = async (
   token: string,

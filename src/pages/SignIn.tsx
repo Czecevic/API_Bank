@@ -1,13 +1,13 @@
 import { useState } from "react";
 // import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { getToken, getUser } from "../API/api";
+import { useNavigate } from "react-router-dom";
 
 export const Signin = () => {
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,12 +17,9 @@ export const Signin = () => {
 
       if (token !== "error") {
         const userData = await getUser(token);
-        console.log(userData);
-        if (userData !== "not found") {
-          let userCredential = {
-            email, password
-          }
-          navigate(`/user`);
+        // console.log(user, password, userData.firstName, userData.lastName);
+        if(userData !== "not found") {
+          return navigate("/user")
         }
       } else {
         setErrorMessage("Mot de passe ou nom d'utilisateur incorrect");
