@@ -1,36 +1,47 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-// import { signin } from "../actions/actions";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { updateUser, selectUser } from "../stores/User.stores";
+import { PopUp } from "../components/PopUp";
 
 // interface LocationState {
 //   user: string;
 // }
 
 export const User: React.FunctionComponent = () => {
-  const { user } = useParams();
-  // const [editUser, setEditUser] = useState<string | undefined>(user);
+  const userData = useSelector(selectUser);
+  console.log(userData);
   const dispatch = useDispatch();
+  const [trigger, setTrigger] = useState<boolean>(false);
+  // console.log(userData);
 
-  const handleEdit = (e: React.FormEvent<HTMLDivElement>) => {
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      const parsedData = JSON.parse(storedUser);
+      dispatch(updateUser(parsedData));
+    }
+  }, [dispatch]);
+
+  const handleEdit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    const postData: { user: string | undefined } = {
-      user: user,
-    };
-    dispatch(signin(postData));
+    setTrigger(!trigger);
   };
 
   return (
     <main className="main bg-dark">
-      <div className="header" onSubmit={(e) => handleEdit(e)}>
+      <div className="header">
         <h1>
           Welcome back
           <br />
           {/* <span onChange={(e) => setEditUser(e.target.value)}>{user}</span> */}
-          <span>{user}</span>
+          <span>
+            {userData.firstName} {userData.lastName}
+          </span>
         </h1>
-        <button className="edit-button">Edit Name</button>
+        <button className="edit-button" onClick={(e) => handleEdit(e)}>
+          Edit Name
+        </button>
+        <PopUp trigger={trigger} setTrigger={setTrigger}></PopUp>
       </div>
       <h2 className="sr-only">Accounts</h2>
       <section className="account">

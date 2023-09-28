@@ -1,25 +1,28 @@
 import { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { getToken, getUser } from "../API/api";
+import { updateUser } from "../stores/User.stores";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export const Signin = () => {
   const [user, setUser] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
-
     try {
       const token = await getToken(user, password);
 
       if (token !== "error") {
         const userData = await getUser(token);
-        // console.log(user, password, userData.firstName, userData.lastName);
-        if(userData !== "not found") {
-          return navigate("/user")
+        if (userData !== "not found") {
+          dispatch(updateUser(userData));
+          localStorage.setItem("user", JSON.stringify(userData));
+          return navigate("/user");
         }
       } else {
         setErrorMessage("Mot de passe ou nom d'utilisateur incorrect");
@@ -55,6 +58,7 @@ export const Signin = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {/* mettre le message en rouge */}
             {errorMessage && <p className="error-message">{errorMessage}</p>}
           </div>
           <div className="input-remember">
