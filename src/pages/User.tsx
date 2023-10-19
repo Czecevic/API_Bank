@@ -9,10 +9,11 @@ import { PopUp } from "../components/PopUp";
 
 export const User: React.FunctionComponent = () => {
   const userData = useSelector(selectUser);
-  console.log(userData);
+  // console.log(userData);
   const dispatch = useDispatch();
   const [trigger, setTrigger] = useState<boolean>(false);
   // console.log(userData);
+  // const editButtonDispatch =
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
@@ -33,7 +34,6 @@ export const User: React.FunctionComponent = () => {
         <h1>
           Welcome back
           <br />
-          {/* <span onChange={(e) => setEditUser(e.target.value)}>{user}</span> */}
           <span>
             {userData.firstName} {userData.lastName}
           </span>

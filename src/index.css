@@ -106,40 +106,26 @@ body {
 
 .formPopUp {
   display: none;
-  background-color: #00bc77;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: none;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
 }
 
 .formPopUpActive {
-  display: block;
-  background-color: #00bc77;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  background-color: #12002b;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 300px;
-  position: absolute;
-  top: 50%;
+  width: 75%;
+  position: relative;
   left: 50%;
+  top: 20px;
   transform: translate(-50%, -50%);
 
   input[type="text"] {
     width: 100%;
+    height: 20px;
     padding: 10px;
     margin-bottom: 15px;
     border: none;
@@ -148,12 +134,28 @@ body {
   }
 }
 
-.form-firstName label,
-.form-lastName label {
+.inputForm {
   display: flex;
+  width: 100%;
+  padding-left: 10px;
   justify-content: center;
+}
+
+.buttonForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+
+.form-lastName input,
+.form-firstName input {
+  background-color: #fff;
   color: #12002b;
-  margin-bottom: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 3px;
 }
 
 .button-form input[type="submit"] {
@@ -164,10 +166,16 @@ body {
   border: none;
   border-radius: 3px;
   cursor: pointer;
+}
 
-  :hover {
-    background-color: #00bc77;
-  }
+.button-cancel input[type="button"] {
+  background-color: #fff;
+  color: #12002b;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 @media (min-width: 920px) {
