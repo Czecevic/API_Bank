@@ -59,7 +59,7 @@ export const createUser = async (
         lastName: lastNameOfUser,
       }
     );
-    console.log(data)
+    console.log(data);
     return true;
   } catch (error) {
     console.error(error);
@@ -68,14 +68,15 @@ export const createUser = async (
 };
 
 // putUser
-export const updateUser = async (
-  token: string,
+export const updateUserApi = async (
   firstName: string,
-  lastName: string
+  lastName: string,
+  token: string
 ) => {
   const header = {
     headers: { Authorization: `Bearer ${token}` },
   };
+  console.log(firstName, lastName, token);
   const bodyParameters = {
     firstName: firstName,
     lastName: lastName,

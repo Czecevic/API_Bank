@@ -7,12 +7,14 @@ import { RootState } from "./index";
 export interface AuthState {
   firstName: string;
   lastName: string;
+  token: string;
 }
 
 // la valeur initial de l'user
 const initialState: AuthState = {
   firstName: "",
   lastName: "",
+  token: "",
 };
 
 export const authReducer = createSlice({
@@ -26,9 +28,13 @@ export const authReducer = createSlice({
     deconnectUser: (state) => {
       (state.firstName = ""), (state.lastName = "");
     },
+    updateToken: (state, action: PayloadAction<AuthState>) => {
+      const { token } = action.payload;
+      state.token = token;
+    },
   },
 });
 
-export const { updateUser, deconnectUser } = authReducer.actions;
+export const { updateUser, deconnectUser, updateToken } = authReducer.actions;
 export const selectUser = (state: RootState) => state.user;
 export default authReducer.reducer;

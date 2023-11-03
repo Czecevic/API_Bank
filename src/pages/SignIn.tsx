@@ -1,7 +1,7 @@
 import { useState } from "react";
 // import { useDispatch } from "react-redux";
 import { getToken, getUser } from "../API/api";
-import { updateUser } from "../stores/User.stores";
+import { updateToken } from "../stores/User.stores";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
@@ -19,8 +19,9 @@ export const Signin = () => {
 
       if (token !== "error") {
         const userData = await getUser(token);
+        dispatch(updateToken(token));
         if (userData !== "not found") {
-          dispatch(updateUser(userData));
+          console.log(userData);
           localStorage.setItem("user", JSON.stringify(userData));
           return navigate("/user");
         }

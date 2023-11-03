@@ -3,10 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUser, selectUser } from "../stores/User.stores";
 import { PopUp } from "../components/PopUp";
 
-// interface LocationState {
-//   user: string;
-// }
-
 export const User: React.FunctionComponent = () => {
   const userData = useSelector(selectUser);
   // console.log(userData);
