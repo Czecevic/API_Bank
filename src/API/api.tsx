@@ -4,7 +4,6 @@
 import axios from "axios";
 
 export const getToken = async (email: string, password: string) => {
-  // console.log(email, password);
   try {
     const { data } = await axios.post(
       `http://localhost:3001/api/v1/user/login`,

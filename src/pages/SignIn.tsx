@@ -19,6 +19,7 @@ export const Signin = () => {
 
       if (token !== "error") {
         const userData = await getUser(token);
+        console.log(token);
         dispatch(updateToken(token));
         if (userData !== "not found") {
           console.log(userData);

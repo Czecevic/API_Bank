@@ -21,7 +21,9 @@ export const PopUp: React.FunctionComponent<PopUpProps> = ({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(token);
-    updateUserApi(firstName, lastName, token);
+    // updateUserApi(firstName, lastName, token);
+    const reponse = updateUserApi(firstName, lastName, token);
+    console.log(reponse);
     dispatch(
       updateUser({ firstName: firstName, lastName: lastName, token: token })
     );

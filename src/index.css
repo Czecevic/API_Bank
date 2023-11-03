@@ -178,6 +178,10 @@ body {
   cursor: pointer;
 }
 
+.error-message {
+  color: red;
+}
+
 @media (min-width: 920px) {
   .hero {
     height: 400px;

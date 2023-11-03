@@ -28,9 +28,8 @@ export const authReducer = createSlice({
     deconnectUser: (state) => {
       (state.firstName = ""), (state.lastName = "");
     },
-    updateToken: (state, action: PayloadAction<AuthState>) => {
-      const { token } = action.payload;
-      state.token = token;
+    updateToken: (state, action: PayloadAction<string>) => {
+      state.token = action.payload;
     },
   },
 });
