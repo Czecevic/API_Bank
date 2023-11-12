@@ -1,12 +1,10 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 import { Homepage } from "./pages/Homepage";
 import { Signin } from "./pages/SignIn";
 import { User } from "./pages/User";
+import { Error } from "./pages/Error";
 
 // derniere version de react router a utiliser
 const router = createBrowserRouter([
@@ -24,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/user",
         element: <User />,
+      },
+      {
+        path: "/*",
+        element: <Error />,
       },
     ],
   },
